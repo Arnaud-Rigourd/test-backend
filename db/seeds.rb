@@ -1,3 +1,10 @@
+puts "Destroying..."
+
+Mission.destroy_all
+Reservation.destroy_all
+Booking.destroy_all
+Listing.destroy_all
+
 puts "Creating listings..."
 
 Listing.create!(num_rooms: 2)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_16_143536) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_16_155350) do
   create_table "bookings", force: :cascade do |t|
     t.integer "listing_id", null: false
     t.date "start_date"
@@ -26,6 +26,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_143536) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "missions", force: :cascade do |t|
+    t.integer "listing_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "date"
+    t.integer "price"
+    t.integer "mission_type"
+    t.index ["listing_id"], name: "index_missions_on_listing_id"
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.integer "listing_id", null: false
     t.date "start_date"
@@ -36,5 +46,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_143536) do
   end
 
   add_foreign_key "bookings", "listings"
+  add_foreign_key "missions", "listings"
   add_foreign_key "reservations", "listings"
 end

@@ -1,4 +1,4 @@
-class Api::V1::ListingsController < Api::V1::BaseController
+class Api::V1::ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :update, :destroy]
 
   def index
@@ -20,7 +20,7 @@ class Api::V1::ListingsController < Api::V1::BaseController
     render json: @listing
   end
 
-  def updated
+  def update
     if @listying.update(listing_params)
       render json: @listing
     else
